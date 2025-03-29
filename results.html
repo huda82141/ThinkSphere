@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Results - Aarav Sharma</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #F0F0F0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .report-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+        }
+        /* HEADER STYLES */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #3C486B;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 60px;
+            height: 60px;
+        }
+        .header h1 {
+            color: #3C486B;
+            font-size: 22px;
+            flex: 1;
+            text-align: center;
+        }
+        .section {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #F45050;
+        }
+        .learning-disability {
+            background: #F9D949;
+        }
+        .findings {
+            background: #FCE38A;
+        }
+        .recommendations {
+            background: #A3D2CA;
+        }
+        .next-steps {
+            background: #FF847C;
+            color: white;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .back-btn {
+            display: block;
+            text-align: center;
+            background: #3C486B;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            background: #2c3b5c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- HEADER WITH LOGO -->
+        <div class="header">
+            <img src="./logo_nobg.png" alt="Logo"> 
+            <h1>Aarav's Results</h1>
+        </div>
+
+        <div class="section learning-disability">
+            <p><span class="highlight">🔍 Learning Disability Identified:</span> Dyslexia</p>
+            <p><span class="highlight">📊 Severity Level:</span> Moderate</p>
+        </div>
+
+        <div class="section findings">
+            <h2>Detailed Findings</h2>
+            <ul>
+                <li><span class="highlight">Reading Fluency:</span> Below average (struggles with reading speed and accuracy)</li>
+                <li><span class="highlight">Spelling & Writing:</span> Frequent spelling errors, difficulty organizing thoughts</li>
+                <li><span class="highlight">Phonemic Awareness:</span> Challenges in breaking words into sounds</li>
+                <li><span class="highlight">Comprehension:</span> Strong when explained verbally or visually</li>
+                <li><span class="highlight">Memory & Processing Speed:</span> Needs extra time for written tasks</li>
+            </ul>
+        </div>
+
+        <div class="section recommendations">
+            <h2>Recommended Learning Interventions</h2>
+            <ul>
+                <li><span class="highlight">✅ Personalized Learning Strategies:</span>
+                    <ul>
+                        <li>Use text-to-speech tools</li>
+                        <li>Encourage audiobooks & recorded lectures</li>
+                        <li>Provide word prediction software</li>
+                    </ul>
+                </li>
+                <li><span class="highlight">✅ Classroom Accommodations:</span>
+                    <ul>
+                        <li>Allow extra time for reading/writing</li>
+                        <li>Provide oral instructions</li>
+                        <li>Use dyslexia-friendly fonts & overlays</li>
+                    </ul>
+                </li>
+                <li><span class="highlight">✅ Skill Development:</span>
+                    <ul>
+                        <li>Phonics-based learning apps</li>
+                        <li>Multi-sensory learning (tracing, reading aloud)</li>
+                        <li>Assistive technology for better reading</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section next-steps">
+            <h2>📌 Next Steps</h2>
+            <p>Aarav's learning profile will now adapt all uploaded study materials to suit his needs. Notes will be rewritten in simpler language, larger fonts, and structured summaries to enhance understanding.</p>
+        </div>
+
+        <a href="dashboard.html" class="back-btn">Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

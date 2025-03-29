@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkSphere - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #232A39; /* Extracted background color from logo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .logo {
+            width: 400px; /* Adjust size */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #F0F0F0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 320px;
+        }
+
+        .card h2 {
+            color: #3C486B;
+            margin-bottom: 15px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: #F45050;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #D43E3E;
+        }
+
+        .signup {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .signup a {
+            color: #F9D949;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="./logo_nobg.png" alt="ThinkSphere Logo" class="logo">
+
+    <div class="card">
+        <h2>Login</h2>
+        <input type="email" placeholder="Enter your email" class="input-field">
+        <input type="password" placeholder="Enter your password" class="input-field">
+        <button class="btn" onclick="window.location.href='assesment.html'">Login</button>
+        <p class="signup">Don't have an account? <a href="#">Sign Up</a></p>
+    </div>
+
+</body>
+</html>

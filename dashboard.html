@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkSphere - Upload PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { display: flex; height: 100vh; background-color: #F0F0F0; justify-content: center; align-items: center; }
+        .dashboard-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 600px; width: 100%; text-align: center; }
+        .upload-box { border: 2px dashed #3C486B; padding: 20px; margin-top: 20px; border-radius: 5px; background: #F9F9F9; display: flex; flex-direction: column; align-items: center; }
+        .upload-btn { background-color: #F9D949; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; margin-top: 10px; border-radius: 5px; }
+        #apply-magic { display: none; background-color: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; margin-top: 20px; border-radius: 5px; }
+        #progress { margin-top: 10px; font-size: 14px; color: #3C486B; }
+        input[type="file"] { display: none; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-card">
+        <h2>Upload Your PDF</h2>
+        <p>Upload a PDF file to extract its content.</p>
+        <label class="upload-box">
+            <input type="file" id="file-upload" accept="application/pdf" onchange="extractPDFText(event)">
+            <button class="upload-btn" type="button" onclick="document.getElementById('file-upload').click()">Select a PDF</button>
+        </label>
+        <p id="file-name">No file selected</p>
+        <p id="progress"></p>
+        <button id="apply-magic" onclick="processPDF()">Apply ThinkSphere's Magic</button>
+    </div>
+
+    <script>
+        async function extractPDFText(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            document.getElementById("file-name").textContent = `Processing: ${file.name}`;
+            document.getElementById("progress").textContent = "Extracting text...";
+            document.getElementById("apply-magic").style.display = "none";
+
+            const reader = new FileReader();
+
+            reader.onload = async function () {
+                const typedarray = new Uint8Array(reader.result);
+                const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                const totalPages = pdf.numPages;
+                const pageTexts = [];
+
+                try {
+                    // Extract all pages in parallel for speed
+                    const textPromises = Array.from({ length: totalPages }, (_, i) => pdf.getPage(i + 1).then(page => 
+                        page.getTextContent().then(tc => tc.items.map(item => item.str).join(" "))
+                    ));
+
+                    const extractedTexts = await Promise.all(textPromises);
+                    const extractedText = extractedTexts.join("\n");
+
+                    localStorage.setItem("extractedText", extractedText);
+
+                    document.getElementById("apply-magic").style.display = "block";
+                    document.getElementById("progress").textContent = "Extraction complete!";
+                } catch (error) {
+                    document.getElementById("progress").textContent = "Failed to extract text!";
+                    console.error("Error extracting PDF text:", error);
+                }
+            };
+
+            reader.readAsArrayBuffer(file);
+        }
+
+        function processPDF() {
+            window.location.href = "process.html";
+        }
+    </script>
+</body>
+</html>
